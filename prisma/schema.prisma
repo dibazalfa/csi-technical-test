@@ -12,3 +12,29 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Job {
+  id              String    @id @default(uuid())
+  channel         String    @db.Text
+  recipient       String    @db.Text
+  message         String    @db.Text
+  status          Status    @default(PENDING)
+  attempts        Int       @default(0)
+  max_attempts    Int       @default(5)
+  next_run_at     DateTime  @default(now())
+  idempotency_key String?   @unique
+  last_error      String?   @db.Text
+  created_at      DateTime  @default(now())
+  updated_at      DateTime  @updatedAt
+  processed_at    DateTime?
+
+  @@map("notification_jobs")
+}
+
+enum Status {
+  PENDING
+  PROCESSING
+  RETRY
+  SUCCESS
+  FAILED
+}
