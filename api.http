@@ -1,0 +1,13 @@
+@base_url=http://localhost:5000
+
+# CREATE JOB
+POST {{base_url}}/api/notifications
+Content-Type: application/json
+
+{
+    "recipient": "dibazalfa@gmail.com",
+    "channel": "email",
+    "message": "Halo!",
+    "idempotency_key": "unique-key-123"
+}
+
