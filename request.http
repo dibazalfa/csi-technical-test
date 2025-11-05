@@ -1,6 +1,7 @@
 @base_url=http://localhost:5000
 @rand = {{$randomInt 1000 9999}}
 
+###
 # CREATE JOB
 POST {{base_url}}/api/notifications
 Content-Type: application/json
@@ -12,3 +13,7 @@ Content-Type: application/json
     "idempotency_key": "job-{{rand}}"
 }
 
+###
+# GET STATS
+GET {{base_url}}/internal/queue/stats
+Content-Type: application/json

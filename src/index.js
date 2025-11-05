@@ -18,8 +18,10 @@ const PORT = process.env.PORT;
 app.use(express.json());
 
 const apiRouter = require('./api/notifications/notif.controller');
+const internalRouter = require('./api/stats/stats.controller');
 
 app.use('/api', apiRouter);
+app.use('/internal', internalRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
