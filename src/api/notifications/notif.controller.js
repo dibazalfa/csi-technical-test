@@ -14,10 +14,10 @@ router.post('/notifications', async (req, res) => {
         }
 
         const job = await createNotificationJob(notificationData);
-        res.status(201).json({ job_id: job.id, status: job.status });
+        return res.status(201).json({ job_id: job.id, status: job.status });
 
     } catch (error) {
-        res.status(400).json({ error: "Failed to create notification job" });
+        return res.status(500).json({ error: "Failed to create notification job" });
     }
 });
 
