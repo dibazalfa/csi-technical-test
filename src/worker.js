@@ -105,6 +105,7 @@ async function processLoop() {
             }
         }
 
+        await sleep(300);
         // await sleep(1000)
     }
 }
