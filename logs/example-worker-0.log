@@ -1,0 +1,46 @@
+[2025-11-05T08:57:43.259Z] {
+  "status": "SUCCESS",
+  "jobId": "172362cb-9d5e-479e-9759-810656b5ffd8",
+  "attempt": 1
+}
+[2025-11-05T08:57:52.296Z] {
+  "status": "RETRY",
+  "jobId": "cea12351-27d9-4a3a-8377-622944067773",
+  "attempt": 1,
+  "nextRunAt": "2025-11-05T08:57:51.362Z"
+}
+[2025-11-05T08:57:52.303Z] {
+  "status": "SUCCESS",
+  "jobId": "cea12351-27d9-4a3a-8377-622944067773",
+  "attempt": 2
+}
+[2025-11-05T08:58:25.892Z] {
+  "status": "RETRY",
+  "jobId": "2fa182bd-74ff-4c5e-b8e3-fe8fff06deec",
+  "attempt": 1,
+  "nextRunAt": "2025-11-05T08:58:25.638Z"
+}
+[2025-11-05T08:58:25.896Z] {
+  "status": "RETRY",
+  "jobId": "2fa182bd-74ff-4c5e-b8e3-fe8fff06deec",
+  "attempt": 2,
+  "nextRunAt": "2025-11-05T08:58:27.887Z"
+}
+[2025-11-05T08:58:25.901Z] {
+  "status": "RETRY",
+  "jobId": "2fa182bd-74ff-4c5e-b8e3-fe8fff06deec",
+  "attempt": 3,
+  "nextRunAt": "2025-11-05T08:58:28.894Z"
+}
+[2025-11-05T08:58:25.905Z] {
+  "status": "RETRY",
+  "jobId": "2fa182bd-74ff-4c5e-b8e3-fe8fff06deec",
+  "attempt": 4,
+  "nextRunAt": "2025-11-05T08:58:30.899Z"
+}
+[2025-11-05T08:58:25.909Z] {
+  "status": "FAILED",
+  "jobId": "2fa182bd-74ff-4c5e-b8e3-fe8fff06deec",
+  "attempt": 5,
+  "last_error": "Simulated transient failure"
+}
