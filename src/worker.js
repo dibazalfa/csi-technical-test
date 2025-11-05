@@ -1,4 +1,5 @@
 const prisma = require('./db');
+const logToFile = require('./utils/logger');
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -73,28 +74,34 @@ async function processLoop() {
         const ok = Math.random() <= 0.7
         if (ok) {
             await markJobSuccess(job.id)
-            console.log(JSON.stringify({
+            const logData = JSON.stringify({
                 status: 'SUCCESS',
                 jobId: job.id,
                 attempt: job.attempts
-            }, null, 2))
+            }, null, 2)
+            console.log(logData)
+            logToFile(logData)
 
         } else {
             const status = await markJobRetryorFail(job)
             if (status === 'RETRY') {
-                console.log(JSON.stringify({
+                const logData = JSON.stringify({
                     status: job.attempts < job.max_attempts ? 'RETRY' : 'FAILED',
                     jobId: job.id,
                     attempt: job.attempts,
                     nextRunAt: job.next_run_at,
-                }, null, 2))
+                }, null, 2)
+                console.log(logData)
+                logToFile(logData)
             } else if (status === 'FAILED') {
-                console.log(JSON.stringify({
+                const logData = JSON.stringify({
                     status: job.attempts < job.max_attempts ? 'RETRY' : 'FAILED',
                     jobId: job.id,
                     attempt: job.attempts,
                     last_error: 'Simulated transient failure'
-                }, null, 2))
+                }, null, 2)
+                console.log(logData)
+                logToFile(logData)
             }
         }
 
