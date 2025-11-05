@@ -1,5 +1,9 @@
 const prisma = require('./db');
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function backoffDelay(attempt) {
     const base = Math.pow(2, Math.max(0, attempt - 1)) // 1,2,4,8,16
     const jitter = Math.random() * 0.3
@@ -62,7 +66,7 @@ async function processLoop() {
     while (true) {
         const job = await claimJob()
         if (!job) {
-            await new Promise(r => setTimeout(r, 500))
+            await sleep(3000)
             continue
         }
 
@@ -93,6 +97,8 @@ async function processLoop() {
                 }, null, 2))
             }
         }
+
+        // await sleep(1000)
     }
 }
 
